@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/LyckaWebshop/static/css/main.ccead30f.chunk.css",
-    "main.js": "/LyckaWebshop/static/js/main.4e5f4689.chunk.js",
-    "main.js.map": "/LyckaWebshop/static/js/main.4e5f4689.chunk.js.map",
+    "main.js": "/LyckaWebshop/static/js/main.c66ec273.chunk.js",
+    "main.js.map": "/LyckaWebshop/static/js/main.c66ec273.chunk.js.map",
     "runtime-main.js": "/LyckaWebshop/static/js/runtime-main.09ced6cf.js",
     "runtime-main.js.map": "/LyckaWebshop/static/js/runtime-main.09ced6cf.js.map",
     "static/js/2.f4b65567.chunk.js": "/LyckaWebshop/static/js/2.f4b65567.chunk.js",
     "static/js/2.f4b65567.chunk.js.map": "/LyckaWebshop/static/js/2.f4b65567.chunk.js.map",
     "index.html": "/LyckaWebshop/index.html",
-    "precache-manifest.59323ea8a73a137844c9b2058b19d7e1.js": "/LyckaWebshop/precache-manifest.59323ea8a73a137844c9b2058b19d7e1.js",
+    "precache-manifest.5bc7f082fc5270d4b136a19cc6d130dd.js": "/LyckaWebshop/precache-manifest.5bc7f082fc5270d4b136a19cc6d130dd.js",
     "service-worker.js": "/LyckaWebshop/service-worker.js",
     "static/css/main.ccead30f.chunk.css.map": "/LyckaWebshop/static/css/main.ccead30f.chunk.css.map",
     "static/js/2.f4b65567.chunk.js.LICENSE.txt": "/LyckaWebshop/static/js/2.f4b65567.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.09ced6cf.js",
     "static/js/2.f4b65567.chunk.js",
     "static/css/main.ccead30f.chunk.css",
-    "static/js/main.4e5f4689.chunk.js"
+    "static/js/main.c66ec273.chunk.js"
   ]
 }
