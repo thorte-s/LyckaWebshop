@@ -14,6 +14,10 @@ export default makeStyles((theme) => ({
             marginRight: '20px',
         },
     },
+    grid:{
+        display: 'inline-block',
+        flexDirection:'column'
+    },
     checkoutButton: {
         minWidth: '150px',
     },
@@ -27,7 +31,8 @@ export default makeStyles((theme) => ({
     },
     cardDetails: {
         display: 'flex',
-        marginTop: '10%',
+        marginTop: '7%',
+        marginBottom: '5%',
         width: '100%',
         justifyContent: 'space-between',
     },

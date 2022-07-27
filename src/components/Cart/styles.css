@@ -1,0 +1,18 @@
+.cart-grid.MuiGrid-container{
+    display: inline-block !important;
+    /*flex-direction: column;*/
+}
+.cart-grid .MuiPaper-root{
+    display: flex;
+}
+.cart-grid .MuiGrid-item{
+    max-width: 100%;
+
+}
+.cart-grid .MuiCard-root {
+    width: 100%;
+}
+.cart-grid .MuiCardActions-root{
+    margin-left: auto;
+    padding-right: 3%;
+}

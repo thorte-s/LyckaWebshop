@@ -99,13 +99,6 @@ const Filters = ({filterProducts, keys}) => {
                                 label="XL"
                             />
                         </FormGroup>
-                        <FormLabel component="legend">Tags</FormLabel>
-                        <FormGroup>
-                            <FormControlLabel
-                                control={<Checkbox checked={keys.sustainable} onChange={handleFilterProducts} name="sustainable" />}
-                                label="Sustainable"
-                            />
-                        </FormGroup>
                     </FormControl>
                 </div>
             </Drawer>

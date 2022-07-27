@@ -5,9 +5,13 @@ export default makeStyles(() => ({
         // maxWidth: 345, original width style
         maxWidth: '100%',
     },
+    cardContainer:{
+        display: 'flex',
+        flexDirection:'column'
+    },
     media: {
         height: 250,
-        paddingTop: '56.25%', // 16:9
+        width: 250,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 175,
     },
@@ -17,8 +21,9 @@ export default makeStyles(() => ({
     },
     cardContent: {
         display: 'flex',
-        justifyContent: 'space-between',
-        height: 50,
+        flexDirection: 'column',
+        height: 'auto',
+        width: 'max-content'
     },
     chip: {
         backgroundColor: '#C3DCAC'
@@ -27,4 +32,14 @@ export default makeStyles(() => ({
         display: 'flex',
         alignItems: 'center',
     },
+    description: {
+        display:"flex",
+        flexDirection:"column",
+        marginTop:"auto"
+    },
+    mediaTooltip: {
+        height: 60,
+        width: 60,
+        backgroundRepeat: 'no-repeat'
+    }
 }));

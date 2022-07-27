@@ -1,5 +1,16 @@
 import React from 'react';
-import {Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button, Container} from '@material-ui/core';
+import {
+    Card,
+    CardMedia,
+    CardContent,
+    CardActions,
+    Typography,
+    IconButton,
+    Button,
+    Container,
+    Collapse, styled, AccordionDetails, Accordion, AccordionSummary
+} from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {AddShoppingCart} from '@material-ui/icons';
 
 import useStyles from './styles';
@@ -10,8 +21,23 @@ import EcoIcon from '../../../assets/icon.svg'
 import Icon from "@material-ui/core/Icon";
 import Avatar from "@material-ui/core/Avatar";
 
+const ExpandMore = styled((props) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+    }),
+}));
+
 const Product = ({product, onAddToCart}) => {
     const classes = useStyles();
+    const [expanded, setExpanded] = React.useState(window.results.subjectGroup);
+
+    const handleChange = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false);
+    };
 
     const handleAddToCart = () => onAddToCart(product.id, 1);
     const svgIcon = (
@@ -24,6 +50,22 @@ const Product = ({product, onAddToCart}) => {
     const renderBanner = () => (
         <span className="tooltip"><Chip className={classes.chip} icon={svgIcon} label="Sustainable"/> <span
             className="tooltiptext">For products labelled as “sustainable”, certified, organic materials are used.</span></span>
+    );
+    const renderProductinfo = () => (
+        <Accordion expanded={expanded === 'SPAS'} className={classes.accordion} onChange={handleChange('SPAS')}>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+            >
+                <Typography className={classes.heading}>Product information</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography>
+                    {product.attributes[1].value}
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
     );
     /* <Buton aria-label="Add to Cart" onClick={handleAddToCart}>
                     <AddShoppingCart/>
@@ -53,7 +95,9 @@ const Product = ({product, onAddToCart}) => {
                             color="textSecondary" component="p"/>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
-                {product.categories.some(item => item.slug === 'sustainable') ? renderBanner() : null}
+                <div>
+                {window.results.subjectGroup==="SPAS"||window.results.subjectGroup==="TACT"?renderProductinfo():null}
+                </div>
                 <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
                     <AddShoppingCart />
                 </IconButton>
@@ -63,4 +107,12 @@ const Product = ({product, onAddToCart}) => {
 };
 
 export default Product;
-
+/*      {product.categories.some(item => item.slug === 'sustainable') ? renderBanner() : null}*/
+/*    <ExpandMore
+expand={expanded}
+onClick={handleExpandClick}
+aria-expanded={expanded}
+aria-label="show more"
+    >
+    <ExpandMoreIcon />
+    </ExpandMore> */

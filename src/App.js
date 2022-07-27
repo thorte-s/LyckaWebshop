@@ -17,40 +17,19 @@ import './styles.css';
 const app = new Realm.App({ id: REALM_APP_ID });*/
 window.results = {
     id: null,
-    group: null,
-    startTime: new Date()
+    group: "ANFLVF",
+    subjectGroup: null,
+    startTime: new Date(),
+    switchedProducts: []
 };
 window.GROUPS = {
-    ANFLVF:0,
-    WBXIPB:1,
-    NQQIPD:2,
-    LLIBWR:3,
-    UMUCAF:4,
-    PXAMYY:5,
-    ZUWTNW:6,
-    LFXPVV:7,
-    PRJJGN:8,
-    DHHDTV:9,
-    GWUVLU:10,
-    KTIHKA:11,
-    IVFQNT:12,
-    VSABJG:13,
-    IBVAUJ:14,
-    AZDWTR:15,
-    KXXNMZ:16,
-    OACIJP:17,
-    UYKREI:18,
-    WBDUWM:19,
-    WVXFNB:20,
-    ETUZIS:21,
-    LHOUNM:22,
-    WDQGIM:23,
-    GYJYZG:24,
-    SCEFYK:25,
-    SIPLQW:26,
-    BIQOOT:27,
-    NGLRPX:28,
-    NSDJPY:29
+    ANFLVF:0
+};
+window.SUBJECTGROUPS = {
+    FCON:1, //NO CONDITION
+    SPAS:2, // OPEN DROPDOWN
+    TACT:3, // CLOSE DROPDOWN
+    FRET:4  // PRODUCT RECOMMENDATION
 };
 const App = () => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -72,7 +51,7 @@ const App = () => {
 
 
     const fetchProducts = async () => {
-        if(window.results.group) {
+        if(window.results.group && window.results.subjectGroup) {
             const {data} = await commerce.products.list({
                 limit: 150,
             });
@@ -111,6 +90,16 @@ const App = () => {
         setCart(item.cart);
     };
 
+    const handleAddSustainableAlternative = async (item) => {
+        const product = await commerce.products.retrieve(item.product_id);
+        window.results.switchedProducts.push(product.related_products[0].id);
+        const response1 = await commerce.cart.remove(item.id);
+        const response2 = await commerce.cart.add(product.related_products[0].id, item.quantity);
+        const lineItems = response1.cart.line_items;
+        adjustPrices(lineItems);
+        setCart(response2.cart);
+    };
+
     const handleUpdateCartQty = async (lineItemId, quantity) => {
         const response = await commerce.cart.update(lineItemId, {quantity});
         const lineItems = response.cart.line_items;
@@ -127,7 +116,6 @@ const App = () => {
 
     const handleEmptyCart = async () => {
         const response = await commerce.cart.empty();
-
         setCart(response.cart);
     };
 
@@ -279,7 +267,7 @@ const App = () => {
                     </Route>
                     <Route exact path="/cart">
                         <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart}
-                              onEmptyCart={handleEmptyCart}/>
+                              onEmptyCart={handleEmptyCart}  onAddSustainableAlternative={handleAddSustainableAlternative}/>
                     </Route>
                 </Switch>
                 </ThemeProvider>

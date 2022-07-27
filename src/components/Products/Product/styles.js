@@ -13,7 +13,7 @@ export default makeStyles(() => ({
     },
     cardActions: {
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
     },
     cardContent: {
         display: 'flex',
@@ -31,4 +31,7 @@ export default makeStyles(() => ({
         marginBottom: '2px',
         padding:'2px'
     },
+    accordion:{
+        boxShadow:'none'
+    }
 }));
