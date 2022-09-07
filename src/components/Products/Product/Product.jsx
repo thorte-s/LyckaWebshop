@@ -62,7 +62,7 @@ const Product = ({product, onAddToCart}) => {
             </AccordionSummary>
             <AccordionDetails>
                 <Typography>
-                    {product.attributes[1].value}
+                    {product.attributes[0].value}
                 </Typography>
             </AccordionDetails>
         </Accordion>

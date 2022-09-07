@@ -49,11 +49,11 @@ const PrimarySearchAppBar = ({totalItems}) => {
             <FormDialog open={open} setOpen={setOpen}/>
             <AppBar position="fixed" className={classes.appBar} color="inherit">
                 <Toolbar>
-                    <Typography component={Link} to="/webshop" variant="h6" className={classes.title} color="inherit">
+                    <Typography component={Link} to="/LyckaWebshop" variant="h6" className={classes.title} color="inherit">
                         <img src={logo} alt="commerce.js" height="85px" className={classes.image}/>
                     </Typography>
                     <div className={classes.grow}/>
-                    {(location.pathname === '/webshop' || location.pathname === '/webshop/') && (
+                    {(location.pathname === '/LyckaWebshop' || location.pathname === '/LyckaWebshop/') && (
                         <div className={classes.button}>
                             <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
                                 <Badge badgeContent={totalItems} color="secondary">

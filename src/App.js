@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Navbar, Products, Cart, Filters} from './components';
 import {commerce} from './lib/commerce';
 import {Filter} from "@material-ui/icons";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import createMuiTheme from "@material-ui/core/styles/createTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import ScriptTag from 'react-script-tag';
 // Import the MongoDB Realm Web SDK
@@ -174,7 +174,7 @@ const App = () => {
         var groupNR = getGroupNR(window.results.group);
         // While there remain elements to shuffle...
         products.map(product => {
-            product.attributes ? productAttributes = product.attributes[0].value : productAttributes = product.sku;
+            product.attributes ? productAttributes = product.attributes[1].value : productAttributes = product.sku;
             if(productAttributes.includes("S")) {
                 priceAdjustmentFactors = extractValues(productAttributes);
                 priceAdjustment = priceAdjustmentFactors[2] / (product.price.raw - (product.price.raw - priceAdjustmentFactors[2]) * priceAdjustmentFactors[1]);
@@ -261,7 +261,7 @@ const App = () => {
                 <CssBaseline/>
                 <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle}/>
                 <Switch>
-                    <Route exact path="/webshop">
+                    <Route exact path="/LyckaWebshop">
                         <Filters filterProducts={filterProducts} keys={filterState}/>
                         <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty/>
                     </Route>

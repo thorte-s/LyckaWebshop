@@ -40,6 +40,11 @@ export default makeStyles(() => ({
     mediaTooltip: {
         height: 60,
         width: 60,
-        backgroundRepeat: 'no-repeat'
+        borderRadius:'4px',
+        backgroundRepeat: 'no-repeat',
+        '&:hover': {
+            cursor: 'pointer',
+            border: 'solid 1px grey'
+        }
     }
 }));

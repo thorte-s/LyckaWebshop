@@ -41,10 +41,10 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
     const renderEmptyCart = () => (
         <div>
             <Typography variant="subtitle1">You have no items in your shopping cart,
-                <Link className={classes.link} to="/webshop"> start adding some</Link>!
+                <Link className={classes.link} to="/LyckaWebshop"> start adding some</Link>!
             </Typography>
             <Button className={classes.checkoutButtonEmptyCart} size="large" type="button" variant="contained"
-                    color="primary" component={Link} to="/webshop">Back</Button>
+                    color="primary" component={Link} to="/LyckaWebshop">Back</Button>
             <Button className={classes.checkoutButtonEmptyCart} onClick={handleOpen} size="large"
                     type="button" variant="contained" color="primary">Checkout</Button>
         </div>
@@ -74,7 +74,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
                 <Typography variant="h4">Subtotal: {subtotal}€</Typography>
                 <div>
                     <Button className={classes.emptyButton} size="large" type="button" variant="contained"
-                            color="primary" component={Link} to="/webshop">Back</Button>
+                            color="primary" component={Link} to="/LyckaWebshop">Back</Button>
                     <Button className={classes.emptyButton} size="large" type="button" variant="contained"
                             color="secondary" onClick={handleEmptyCart}>Empty cart</Button>
                     <Button className={classes.checkoutButton} onClick={handleOpen} size="large"
@@ -128,8 +128,6 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
                     product_sustainable: !!item.sku.includes("S"),
                     product_switched: !!window.results.switchedProducts.find(element => element === item.product_id)
                 };
-             /* jsonObj["product_"+item.index()+"_sustainable"]=TODO;
-               jsonObj["product_"+item.index()+"_switched"]=TODO;*/
            })
             var jsonObj = {
                 participant_id: window.results.subjectGroup,
@@ -144,13 +142,6 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
                 subtotal: cart.subtotal.raw,
                 products: products
             };
-          /* cart.line_items.forEach((item, index) => {
-                jsonObj["product_"+index+"_id"]=item.id;
-                jsonObj["product_"+index+"_quantity"]=item.quantity;
-                jsonObj["product_"+index+"_price"]=item.price.raw;
-              /* jsonObj["product_"+item.index()+"_sustainable"]=TODO;
-                jsonObj["product_"+item.index()+"_switched"]=TODO;
-            })*/
 
             axios.post("https://eu-central-1.aws.data.mongodb-api.com/app/application-0-vxthq/endpoint/postData",
                 jsonObj).then(res => {
