@@ -37,6 +37,10 @@ export default makeStyles(() => ({
         flexDirection:"column",
         marginTop:"auto"
     },
+    options: {
+        display:"flex",
+        flexDirection:"row"
+    },
     mediaTooltip: {
         height: 60,
         width: 60,

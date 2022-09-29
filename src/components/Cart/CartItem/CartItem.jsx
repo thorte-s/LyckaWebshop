@@ -27,8 +27,12 @@ const CartItem = ({product, item, onUpdateCartQty, onRemoveFromCart, onAddSustai
             <Typography variant="p" component="h4">
                 Want to switch to a sustainable option?
             </Typography>
-            <CardMedia image={item.image.url} alt={"product image"} className={classes.mediaTooltip}
-                       onClick={() => handleAddSustainableAlternative(item)}/>
+            <div className={classes.options}>
+            {product.related_products.map((product, index) => (
+            <CardMedia image={product.image.url} alt={"product image"} className={classes.mediaTooltip}
+                       onClick={() => handleAddSustainableAlternative([item,index])}/>
+                ))}
+            </div>
         </div>
     );
 

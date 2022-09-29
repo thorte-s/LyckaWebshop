@@ -27,8 +27,8 @@ window.GROUPS = {
 };
 window.SUBJECTGROUPS = {
     FCON:1, //NO CONDITION
-    SPAS:2, // OPEN DROPDOWN
-    TACT:3, // CLOSE DROPDOWN
+    TACT:2, // OPEN DROPDOWN
+    SPAS:3, // CLOSE DROPDOWN
     FRET:4  // PRODUCT RECOMMENDATION
 };
 const App = () => {
@@ -56,7 +56,7 @@ const App = () => {
                 limit: 150,
             });
             shuffleProducts(data);
-            adjustPrices(data);
+            //adjustPrices(data); DEACTIVATING PRICE ENGINE: TO ACTIVATE, REMOVE COMMENTS ON EVERY "adjustPrices" function in this file
             setProducts(data);
         } else {
             setTimeout(fetchProducts,800);
@@ -79,38 +79,38 @@ const App = () => {
             limit:100,
         });
         shuffleProducts(data);
-        adjustPrices(data);
+        //adjustPrices(data);
         setProducts(data);
     };
 
     const handleAddToCart = async (productId, quantity) => {
         const item = await commerce.cart.add(productId, quantity);
         const lineItems = item.cart.line_items;
-        adjustPrices(lineItems);
+        //adjustPrices(lineItems); PRICE ENGINE DEACTIVATED
         setCart(item.cart);
     };
 
-    const handleAddSustainableAlternative = async (item) => {
-        const product = await commerce.products.retrieve(item.product_id);
-        window.results.switchedProducts.push(product.related_products[0].id);
-        const response1 = await commerce.cart.remove(item.id);
-        const response2 = await commerce.cart.add(product.related_products[0].id, item.quantity);
+    const handleAddSustainableAlternative = async (itemArray) => {
+        const product = await commerce.products.retrieve(itemArray[0].product_id);
+        window.results.switchedProducts.push(product.related_products[itemArray[1]].id);
+        const response1 = await commerce.cart.remove(itemArray[0].id);
+        const response2 = await commerce.cart.add(product.related_products[itemArray[1]].id, itemArray[0].quantity);
         const lineItems = response1.cart.line_items;
-        adjustPrices(lineItems);
+        //adjustPrices(lineItems);
         setCart(response2.cart);
     };
 
     const handleUpdateCartQty = async (lineItemId, quantity) => {
         const response = await commerce.cart.update(lineItemId, {quantity});
         const lineItems = response.cart.line_items;
-        adjustPrices(lineItems);
+        //adjustPrices(lineItems);
         setCart(response.cart);
     };
 
     const handleRemoveFromCart = async (lineItemId) => {
         const response = await commerce.cart.remove(lineItemId);
         const lineItems = response.cart.line_items;
-        adjustPrices(lineItems);
+        //adjustPrices(lineItems);
         setCart(response.cart);
     };
 
@@ -122,7 +122,7 @@ const App = () => {
     const refreshCart = async () => {
         const newCart = await commerce.cart.refresh();
         const lineItems = newCart.line_items;
-        adjustPrices(lineItems);
+        //adjustPrices(lineItems);
         setCart(newCart);
     };
 

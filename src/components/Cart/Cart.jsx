@@ -28,7 +28,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
         let subtotal = 0;
         if (cart.line_items) {
             cart.line_items.forEach((item) => {
-                subtotal+=item.price.raw*item.quantity;
+                subtotal+= roundPrice(item.price.raw*item.quantity);
                 //   return commerce.products.retrieve(item.product_id);
             });
             setSubtotal(roundPrice(subtotal));
