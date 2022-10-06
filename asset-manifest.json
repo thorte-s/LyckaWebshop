@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/LyckaWebshop/static/css/main.ccead30f.chunk.css",
-    "main.js": "/LyckaWebshop/static/js/main.aab94567.chunk.js",
-    "main.js.map": "/LyckaWebshop/static/js/main.aab94567.chunk.js.map",
+    "main.js": "/LyckaWebshop/static/js/main.7ecf0631.chunk.js",
+    "main.js.map": "/LyckaWebshop/static/js/main.7ecf0631.chunk.js.map",
     "runtime-main.js": "/LyckaWebshop/static/js/runtime-main.aa1195df.js",
     "runtime-main.js.map": "/LyckaWebshop/static/js/runtime-main.aa1195df.js.map",
     "static/js/2.98f53ca1.chunk.js": "/LyckaWebshop/static/js/2.98f53ca1.chunk.js",
     "static/js/2.98f53ca1.chunk.js.map": "/LyckaWebshop/static/js/2.98f53ca1.chunk.js.map",
     "index.html": "/LyckaWebshop/index.html",
-    "precache-manifest.c19298a7b7727604cf439983b3a1dd92.js": "/LyckaWebshop/precache-manifest.c19298a7b7727604cf439983b3a1dd92.js",
+    "precache-manifest.ef5f86ed3f3f52ed9d9d93ef7f2ca1fd.js": "/LyckaWebshop/precache-manifest.ef5f86ed3f3f52ed9d9d93ef7f2ca1fd.js",
     "service-worker.js": "/LyckaWebshop/service-worker.js",
     "static/css/main.ccead30f.chunk.css.map": "/LyckaWebshop/static/css/main.ccead30f.chunk.css.map",
     "static/js/2.98f53ca1.chunk.js.LICENSE.txt": "/LyckaWebshop/static/js/2.98f53ca1.chunk.js.LICENSE.txt",
-    "static/js/main.aab94567.chunk.js.LICENSE.txt": "/LyckaWebshop/static/js/main.aab94567.chunk.js.LICENSE.txt",
+    "static/js/main.7ecf0631.chunk.js.LICENSE.txt": "/LyckaWebshop/static/js/main.7ecf0631.chunk.js.LICENSE.txt",
     "static/media/Logo.png": "/LyckaWebshop/static/media/Logo.e993abba.png",
     "static/media/icon.svg": "/LyckaWebshop/static/media/icon.28a304ac.svg"
   },
@@ -20,6 +20,6 @@
     "static/js/runtime-main.aa1195df.js",
     "static/js/2.98f53ca1.chunk.js",
     "static/css/main.ccead30f.chunk.css",
-    "static/js/main.aab94567.chunk.js"
+    "static/js/main.7ecf0631.chunk.js"
   ]
 }
