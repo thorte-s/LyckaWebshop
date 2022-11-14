@@ -22,14 +22,19 @@ export default function FormDialog({open, setOpen}) {
     };
 
     const handleClose = () => {
-        if(window.SUBJECTGROUPS[textGroup] === undefined) {
+        if(text.length < 10 || window.SUBJECTGROUPS[textGroup] === undefined) {
+            if(text.length < 10){
+                setError(true);
+                setHelperText("Please enter your correct ID.");
+            }
             if(text.length < 4){
                 setErrorGroup(true);
                 setHelperTextGroup("Please enter your correct Group-Nr.");
             }
-            }
+        }
         else{
-            window.results.subjectGroup = document.getElementById("group-input").value;
+            window.results.id = document.getElementById("id-input").value;
+            window.results.group = document.getElementById("group-input").value;
             setOpen(false);
         }
     };
@@ -42,6 +47,18 @@ export default function FormDialog({open, setOpen}) {
                     <DialogContentText>
               Before starting, please enter your prolific ID and Group number here and click on "Go!".
                     </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="id-input"
+                        label="ID"
+                        type="id"
+                        value={text}
+                        onChange={event => setText(event.target.value )}
+                        error={error}
+                        helperText={helperText}
+                        fullWidth
+                    />
                     <TextField
                         autoFocus
                         margin="dense"

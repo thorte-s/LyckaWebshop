@@ -52,7 +52,7 @@ const Product = ({product, onAddToCart}) => {
             className="tooltiptext">For products labelled as “sustainable”, certified, organic materials are used.</span></span>
     );
     const renderProductinfo = () => (
-        <Accordion expanded={expanded === 'SPAS'} className={classes.accordion} onChange={handleChange('SPAS')}>
+        <Accordion expanded={expanded === 'TACT'} className={classes.accordion} onChange={handleChange('TACT')}>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
