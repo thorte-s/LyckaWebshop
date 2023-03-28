@@ -29,12 +29,12 @@ export default function FormDialog({open, setOpen}) {
             }
             if(text.length < 4){
                 setErrorGroup(true);
-                setHelperTextGroup("Please enter your correct Group-Nr.");
+                setHelperTextGroup("Please enter your correct Participation Nr.");
             }
         }
         else{
             window.results.id = document.getElementById("id-input").value;
-            window.results.group = document.getElementById("group-input").value;
+            window.results.subjectGroup = document.getElementById("group-input").value;
             setOpen(false);
         }
     };
@@ -63,7 +63,7 @@ export default function FormDialog({open, setOpen}) {
                         autoFocus
                         margin="dense"
                         id="group-input"
-                        label="GROUP-NUMBER"
+                        label="Participation Number"
                         type="id"
                         value={textGroup}
                         onChange={event => setTextGroup(event.target.value)}

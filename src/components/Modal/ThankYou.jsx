@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default function ThankYou({open}) {
 
     function leaveSurvey() {
-        window.open("https://www.google.com/"+window.results.id,"_self");
+        window.open("https://app.prolific.co/submissions/complete?cc=7B356C5D","_self");
     }
 
     return (
@@ -19,8 +19,8 @@ export default function ThankYou({open}) {
                 <DialogTitle id="form-dialog-title">Thanks for participation!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Please go back to the survey using the button: <br/><br/><Button size="small" type="button" variant="contained"
-                                                                                         color="primary" onClick={leaveSurvey}>Back to survey</Button><br/>
+                        Receive your payment via this Button: <br/><br/><Button size="small" type="button" variant="contained"
+                                                                                         color="primary" onClick={leaveSurvey}>Receive payment</Button><br/>
                     </DialogContentText>
                 </DialogContent>
             </Dialog>

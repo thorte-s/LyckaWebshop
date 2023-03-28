@@ -6,6 +6,7 @@ import logo from '../../assets/Logo.png';
 import useStyles from './styles';
 import FormDialog from "../Modal/FormDialog";
 import {Form} from "semantic-ui-react";
+import Intro1 from "../Modal/Intro1";
 
 
 const PrimarySearchAppBar = ({totalItems}) => {
@@ -46,7 +47,7 @@ const PrimarySearchAppBar = ({totalItems}) => {
 
     return (
         <>
-            <FormDialog open={open} setOpen={setOpen}/>
+            <Intro1 open={open} setOpen={setOpen}/>
             <AppBar position="fixed" className={classes.appBar} color="inherit">
                 <Toolbar>
                     <Typography component={Link} to="/LyckaWebshop" variant="h6" className={classes.title} color="inherit">

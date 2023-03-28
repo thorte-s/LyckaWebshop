@@ -14,7 +14,9 @@ import './styles.css';
 
 // Connect to your MongoDB Realm app
 /*const REALM_APP_ID = "webapplication-yoqap"; // e.g. myapp-abcde
-const app = new Realm.App({ id: REALM_APP_ID });*/
+const app = new Realm.App({ id: REALM_APP_ID });
+var rnmb = Math.floor(Math.random() * 4) + 1;    random number
+*/
 window.results = {
     id: null,
     group: "ANFLVF",
