@@ -5,10 +5,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Intro4 from "./Intro4";
+import FormDialog from "./FormDialog";
 
 export default function Intro3({open, setOpen}) {
     const [rOpen, rSetOpen] = React.useState(false);
+    const randomizedGroups = ["FCON","TACT","SPAS","FRET"];
+    const randomizedGroup = randomizedGroups[Math.floor(Math.random() * 4)];
     const handleClose = () => {
         setOpen(false);
         handleClickOpen();
@@ -19,27 +21,27 @@ export default function Intro3({open, setOpen}) {
 
     return (
         <div>
-            <Intro4 open={rOpen} setOpen={rSetOpen}/>
+            <FormDialog open={rOpen} setOpen={rSetOpen} />
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Introduction</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         <p>
-                            Also for this survey you will receive a fixed payment of 1.5 £.
-
-                            Your variable payment corresponds to one of the items in your basket.
-                            Which item is determined randomly.
-                            The price of the randomly selected item will then be transferred to real money.
-
-                            For instance a price of 30€ in the online shop corresponds to an amount of 30*0.015=0.45 £
-                            of real money.
-                            This is your variable payment.
+                            This is the code for your webshop access:
+                            <b> {randomizedGroup}
+                            </b>
+                            <br/>
+                            Please keep it in mind or write it down.
+                            You need the code to proceed.
+                            <br/> <br/>
+                            Please keep in mind that the webshop takes second to load.
+                            Press the following buttom which leads to the webshop.
                         </p>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Continue
+                        Go to webshop
                     </Button>
                 </DialogActions>
             </Dialog>
