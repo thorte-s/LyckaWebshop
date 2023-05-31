@@ -147,7 +147,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
                 jsonObj).then(res => {
                 console.log(res);
             });*/
-            //COMMENT IN FOR DATA PUSH TO SERVERS
+            COMMENT IN FOR DATA PUSH TO SERVERS
         handleClickOpen();
         setOpen(true);
          });
