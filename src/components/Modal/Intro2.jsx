@@ -31,7 +31,7 @@ export default function Intro2({open, setOpen}) {
                             <br/>
                             <br/>
                             When arriving at your destination the airline tells you that your luggage will arrive 
-                            two days after landing, because they checked your luggage into another airplane, by accident.
+                            two days after landing, because they checked your luggage into another airplane.
                             For you to have clothes for the next two days, the airline offers you the following:
                             <br/>
                             <br/>
