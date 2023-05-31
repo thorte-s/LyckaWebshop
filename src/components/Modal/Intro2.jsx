@@ -39,7 +39,7 @@ export default function Intro2({open, setOpen}) {
                             <br/>
                             (1) You must spend the whole amount
                             <br/>
-                            (2) You can simply put the items you like in the basket and proceed to the checkout.
+                            (2) You can simply put the items in the basket and proceed to the checkout.
                         </p>
                     </DialogContentText>
                 </DialogContent>
