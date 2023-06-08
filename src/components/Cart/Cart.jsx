@@ -146,10 +146,8 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
            axios.post("https://eu-central-1.aws.data.mongodb-api.com/app/application-0-vxthq/endpoint/postData",
                 jsonObj).then(res => {
                 console.log(res);
-            });
-
-        handleClickOpen();
-        setOpen(true);
+                handleClickOpen();
+                setOpen(true);
          });
     };
 
