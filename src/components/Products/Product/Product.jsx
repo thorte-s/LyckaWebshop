@@ -36,6 +36,10 @@ const Product = ({product, onAddToCart}) => {
     const [expanded, setExpanded] = React.useState(window.results.subjectGroup);
 
     const handleChange = (panel) => (event, newExpanded) => {
+        const itemName= event.currentTarget.parentElement.parentElement.parentElement.parentElement.childNodes[0].title;
+        if(!(itemName in window.results.checkbox_tick)) {
+            window.results.checkbox_tick[itemName] = true;
+        }
         setExpanded(newExpanded ? panel : false);
     };
 

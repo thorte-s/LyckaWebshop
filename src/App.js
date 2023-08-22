@@ -20,6 +20,8 @@ var rnmb = Math.floor(Math.random() * 4) + 1;    random number
 window.results = {
     id: null,
     group: "ANFLVF",
+    checkbox_tick:{},
+    payment:null,
     subjectGroup: null,
     startTime: new Date(),
     switchedProducts: []
