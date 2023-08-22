@@ -22,6 +22,7 @@ window.results = {
     group: "ANFLVF",
     checkbox_tick:{},
     payment:null,
+    extrapayment:null,
     subjectGroup: null,
     startTime: new Date(),
     switchedProducts: []
