@@ -2,20 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {Button, Container, Grid, Typography} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import {commerce} from './../../lib/commerce';
-
 import CartItem from './CartItem/CartItem';
 import useStyles from './styles';
 import axios from 'axios';
 import ThankYou from "../Modal/ThankYou";
 import './styles.css';
-
 const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustainableAlternative}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleEmptyCart = () => onEmptyCart();
     const [products, setProducts] = useState([]);
     const [subtotal, setSubtotal] = useState(0);
-
     const renderProducts = async () => {
         if (cart.line_items) {
             const data = await Promise.all(cart.line_items.map(async (item) => {
@@ -49,7 +46,6 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
                     type="button" variant="contained" color="primary">Checkout</Button>
         </div>
     );
-
     useEffect(() => {
         const fetchProducts = async () => {
             renderProducts();
@@ -57,9 +53,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
         fetchProducts().catch(console.error);
         calcSubtotal();
     }, cart.line_items);
-
     if (!cart.line_items) return 'Loading';
-
     const renderCart = () => (
         <>
             <Grid className="cart-grid" container spacing={3}>
@@ -83,66 +77,77 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
             </div>
         </>
     );
-
-
     const handleOpen = async () => {
-        let products = [];
-        let productItems = await Promise.all(cart.line_items.map(async (item) => {
-            return {product: await commerce.products.retrieve(item.product_id),item};
-        }));
-        const sustainableItemCounter = productItems.reduce((acc, productItem) => {
-            if (productItem.product.categories.map(category => category.slug).includes("sustainable")) {
-                acc += productItem.item.quantity;
-            }
-            return acc
-        }, 0);
-        const sustainableItemPrice = productItems.reduce((acc, productItem) => {
-            if (productItem.product.categories.map(category => category.slug).includes("sustainable")) {
-                acc += productItem.item.price.raw*productItem.item.quantity;
-            }
-            return acc
-        }, 0);
+        if(cart.subtotal.raw < 200) {
+            let products = [];
+             let productItems = await Promise.all(cart.line_items.map(async (item) => {
+                 return {product: await commerce.products.retrieve(item.product_id), item};
+             }));
+             window.results.extrapayment = parseFloat((cart.line_items[Math.floor(Math.random() * products.length)].price.raw*0.015).toFixed(3));
+             window.results.payment =  (window.results.extrapayment+1.5);
+             const sustainableItemCounter = productItems.reduce((acc, productItem) => {
+                 if (productItem.product.categories.map(category => category.slug).includes("sustainable")) {
+                     acc += productItem.item.quantity;
 
-        //for (var i=0;i<cart.total_unique_items;i++) {
 
-           /* var jsonObj = {
-                participant_id: window.results.id,
-                group_id: window.results.group,
-                product_id:cart.line_items[i].sku,
-                product_qnty:cart.line_items[i].quantity,
-                product_price:cart.line_items[i].price.raw,
-                startTime: window.results.startTime,
-                timePassedSec: (new Date().getTime() - window.results.startTime.getTime()) / 1000,
-                products: cart.line_items,
-                total_items: cart.total_items,
-                total_unique_items: cart.total_unique_items,
-                total_items_sustainable: sustainableItemCounter,
-                subtotal_sustainable: sustainableItemPrice,
-                subtotal: cart.subtotal.raw
-            };*/
-             cart.line_items.forEach((item, index) => {
+
+
+
+
+
+          Expand Down
+
+
+
+                }
+                return acc
+            }, 0);
+            const sustainableItemPrice = productItems.reduce((acc, productItem) => {
+                if (productItem.product.categories.map(category => category.slug).includes("sustainable")) {
+                    acc += productItem.item.price.raw * productItem.item.quantity;
+                }
+                return acc
+            }, 0);
+            //for (var i=0;i<cart.total_unique_items;i++) {
+            /* var jsonObj = {
+                 participant_id: window.results.id,
+                 group_id: window.results.group,
+                 product_id:cart.line_items[i].sku,
+                 product_qnty:cart.line_items[i].quantity,
+                 product_price:cart.line_items[i].price.raw,
+                 startTime: window.results.startTime,
+                 timePassedSec: (new Date().getTime() - window.results.startTime.getTime()) / 1000,
+                 products: cart.line_items,
+                 total_items: cart.total_items,
+                 total_unique_items: cart.total_unique_items,
+                 total_items_sustainable: sustainableItemCounter,
+                 subtotal_sustainable: sustainableItemPrice,
+                 subtotal: cart.subtotal.raw
+             };*/
+            cart.line_items.forEach((item, index) => {
                 products[index] = {
-                    product_id: item.id,
+                    product_id: item.name,
                     product_quantity: item.quantity,
                     product_price: item.price.raw,
                     product_sustainable: !!item.sku.includes("S"),
                     product_switched: !!window.results.switchedProducts.find(element => element === item.product_id)
                 };
-           })
+            })
             var jsonObj = {
                 participant_id: window.results.subjectGroup,
                 startTime: window.results.startTime,
                 group_id: window.results.group,
-                endTime: new Date().getTime(),
+                endTime: new Date().toTimeString(),
                 duration: (new Date().getTime() - window.results.startTime.getTime()) / 1000,
                 finished: "True",
-                recorded_date: new Date().getTime(),
-                checkbox_tick: "to-DO",
+                recorded_date: new Date().toDateString(),
+                checkbox_tick: JSON.stringify(window.results.checkbox_tick),
                 total_items: cart.total_items,
                 subtotal: cart.subtotal.raw,
-                products: products
+                products: products,
+                randomized_payment: window.results.payment,
             };
-             axios.post("https://eu-central-1.aws.data.mongodb-api.com/app/application-0-vxthq/endpoint/postData",
+            axios.post("https://eu-central-1.aws.data.mongodb-api.com/app/application-0-vxthq/endpoint/postData",
                 jsonObj).then(res => {
                 console.log(res);
                 handleClickOpen();
@@ -152,11 +157,9 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
             alert("Your cart's subtotal is bigger than 200€, please remove products");
         }
     };
-
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     return (
         <Container>
             <ThankYou open={open} setOpen={setOpen}/>
@@ -166,5 +169,4 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
         </Container>
     );
 };
-
 export default Cart;
