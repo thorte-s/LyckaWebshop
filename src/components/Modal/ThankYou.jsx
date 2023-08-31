@@ -19,9 +19,7 @@ export default function ThankYou({open}) {
                 <DialogTitle id="form-dialog-title">Thanks for participation!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Your fixed payment is: 1.5£<br/>
-                        Your variable payment is: {window.results.extrapayment}£<br/>
-                        Your total payment is: {window.results.payment}£<br/>
+                        Your calculated payment is: {window.results.payment} £
                         <br/><br/>
                         Receive your payment via this Button: <br/><br/><Button size="small" type="button" variant="contained"
                                                                                          color="primary" onClick={leaveSurvey}>Receive payment</Button><br/>

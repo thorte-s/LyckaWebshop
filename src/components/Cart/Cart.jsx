@@ -91,8 +91,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
             let productItems = await Promise.all(cart.line_items.map(async (item) => {
                 return {product: await commerce.products.retrieve(item.product_id), item};
             }));
-            window.results.extrapayment = parseFloat((cart.line_items[Math.floor(Math.random() * products.length)].price.raw*0.015).toFixed(3));
-            window.results.payment =  (window.results.extrapayment+1.5);
+            window.results.payment = cart.line_items[Math.floor(Math.random() * products.length)].price.raw*0.015+1.5;
             const sustainableItemCounter = productItems.reduce((acc, productItem) => {
                 if (productItem.product.categories.map(category => category.slug).includes("sustainable")) {
                     acc += productItem.item.quantity;
