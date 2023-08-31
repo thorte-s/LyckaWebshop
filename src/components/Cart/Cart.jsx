@@ -86,7 +86,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
 
 
     const handleOpen = async () => {
-        if(cart.subtotal.raw <= 200) {
+        if(cart.subtotal.raw < 201) {
             let products = [];
             let productItems = await Promise.all(cart.line_items.map(async (item) => {
                 return {product: await commerce.products.retrieve(item.product_id), item};
