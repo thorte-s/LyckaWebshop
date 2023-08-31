@@ -89,16 +89,6 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, onAddSustai
                  if (productItem.product.categories.map(category => category.slug).includes("sustainable")) {
                      acc += productItem.item.quantity;
 
-
-
-
-
-
-
-          Expand Down
-
-
-
                 }
                 return acc
             }, 0);
