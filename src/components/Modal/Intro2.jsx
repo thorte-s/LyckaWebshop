@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Intro3 from "./Intro3";
+import Intro2b from "./Intro2b";
 
 export default function Intro2({open, setOpen}) {
     const [rOpen, rSetOpen] = React.useState(false);
@@ -19,7 +19,7 @@ export default function Intro2({open, setOpen}) {
 
     return (
         <div>
-            <Intro3 open={rOpen} setOpen={rSetOpen}/>
+            <Intro2b open={rOpen} setOpen={rSetOpen}/>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Please read the following carefully</DialogTitle>
                 <DialogContent>
